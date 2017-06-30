@@ -2,7 +2,7 @@ namespace Isp
 {
     public class TranslatorFactory
     {
-        public static IFileTranslator CreateTranslator(Language language)
+        public static ITranslator CreateTranslator(Language language)
         {
             switch (language)
             {

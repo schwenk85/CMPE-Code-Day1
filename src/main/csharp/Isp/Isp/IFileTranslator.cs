@@ -1,10 +1,12 @@
-using System;
-
 namespace Isp
 {
-    public interface IFileTranslator
+    public interface ITranslator
     {
-        String Translate(String text);
-        String LoadFile(String filename);
+        string Translate(string text);
+    }
+
+    public interface IFileLoader
+    {
+        string LoadFile(string filename);
     }
 }
