@@ -5,27 +5,51 @@ namespace Srp
 {
     public class CsvReader
     {
-        private readonly string filename;
+        private FileReader _fileReader;
+        private CsvParser _csvParser;
+          
+        public CsvReader(string filename)
+        {
+            _fileReader = new FileReader(filename);
+            _csvParser = new CsvParser();
+
+            ParseCsv();
+        }
+
+        public CsvParser CsvParser => _csvParser;
+
+        private void ParseCsv()
+        {
+            _csvParser.ParseFile(_fileReader.GetAllLinesOfFile());
+        }
+    }
+
+    public class FileReader
+    {
+        private readonly string _filename;
+
+        public FileReader(string filename)
+        {
+            _filename = filename;
+        }
+
+        public IEnumerable<string> GetAllLinesOfFile()
+        {
+            return File.ReadAllLines(_filename);
+        }
+    }
+
+    public class CsvParser
+    {
+        private List<string[]> _records = new List<string[]>();
 
         public string[] Header { get; private set; }
 
-        public List<string[]> Records
+        public List<string[]> Records => _records;
+
+        public void ParseFile(IEnumerable<string> lines)
         {
-            get { return records; }
-        }
-
-        private readonly List<string[]> records = new List<string[]>();
-
-        public CsvReader(string filename)
-        {
-            this.filename = filename;
-
-            ParseFile();
-        }
-
-        private void ParseFile()
-        {
-            foreach (var line in ReadAllLinesOfFile())
+            foreach (var line in lines)
             {
                 if (Header == null)
                 {
@@ -34,24 +58,19 @@ namespace Srp
                 else
                 {
                     var record = ParseRecord(line);
-                    records.Add(record);
+                    _records.Add(record);
                 }
             }
-        }
-
-        private IEnumerable<string> ReadAllLinesOfFile()
-        {
-            return File.ReadAllLines(filename);
-        }
-
-        private void ParseHeader(string line)
-        {
-            Header = ParseRecord(line);
         }
 
         private static string[] ParseRecord(string line)
         {
             return line.Split(',');
+        }
+
+        private void ParseHeader(string line)
+        {
+            Header = ParseRecord(line);
         }
     }
 }

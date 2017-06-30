@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Dip
 {
-    public class ApacheLog
+    public class ApacheLog : ILog
     {
         private readonly string filename;
 

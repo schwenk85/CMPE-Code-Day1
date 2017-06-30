@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ApacheLog.cs" />
     <Compile Include="IisLog.cs" />
+    <Compile Include="ILog.cs" />
     <Compile Include="LogEntry.cs" />
     <Compile Include="LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="DecoyDuck.cs" />
     <Compile Include="Duck.cs" />
+    <Compile Include="LivingDuck.cs" />
     <Compile Include="MallardDuck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuackingDuck.cs" />
     <Compile Include="RedheadDuck.cs" />
     <Compile Include="RubberDuck.cs" />
   </ItemGroup>

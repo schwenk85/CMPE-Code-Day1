@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Dip
 {
-    public class IisLog
+    public class IisLog : ILog
     {
         private readonly string filename;
 
@@ -13,7 +13,7 @@ namespace Dip
             this.filename = filename;
         }
 
-        public IEnumerable<LogEntry> ReadLogEntries()
+        public IEnumerable<LogEntry> LoadLogEntries()
         {
             var logEntries = new List<LogEntry>();
             foreach (var line in ReadAllLinesOfFile())

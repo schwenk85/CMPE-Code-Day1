@@ -12,7 +12,7 @@ namespace SrpTests
         public void GetHeader_ValidFile_CorrectHeaderCount()
         {
             var reader = CreateCsvReader();
-            var header = reader.Header;
+            var header = reader.CsvParser.Header;
             header.Should().NotBeNull();
             header.Length.Should().Be(5);
             header[0].Should().Be("Record1");
@@ -23,7 +23,7 @@ namespace SrpTests
         {
             var reader = CreateCsvReader();
 
-            var records = reader.Records;
+            var records = reader.CsvParser.Records;
 
             records.Should().NotBeNull();
             records.Count.Should().Be(3);

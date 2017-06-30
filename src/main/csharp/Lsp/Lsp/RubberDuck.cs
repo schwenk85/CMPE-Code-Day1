@@ -2,7 +2,7 @@ using System;
 
 namespace Lsp
 {
-    public class RubberDuck : Duck
+    public class RubberDuck : QuackingDuck
     {
         public override void Display()
         {
@@ -10,16 +10,6 @@ namespace Lsp
         }
 
         public override void Quack()
-        {
-            squeek();
-        }
-
-        public override void Fly()
-        {
-            // Override to do nothing.
-        }
-
-        private void squeek()
         {
             Console.WriteLine("squeek");
         }

@@ -1,13 +1,22 @@
+using System;
+using System.Windows.Controls;
+
 namespace Ocp
 {
-    public class Shape
+    public abstract class Shape
     {
-        public ShapeType Type;
-    }
+        private static Random random = new Random();
+        protected int positionLeft;
+        protected int positionTop;
+        
+        public Shape()
+        {
+            const int border = 50;
+            positionLeft = random.Next(100) + border / 2;
+            positionTop = random.Next(100) + border / 2;
+        }
 
-    public enum ShapeType
-    {
-        Circle,
-        Square
-    };
+        public abstract void DrawOnConsole();
+        public abstract void DrawOnCanvas(Canvas canvas);
+    }
 }

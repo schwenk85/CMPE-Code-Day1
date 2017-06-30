@@ -13,18 +13,40 @@ namespace DipTests
         [TestMethod]
         public void ParseApacheLog_ValidFile_CorrectErrorCount()
         {
+            // arrange
             var apacheLog = CreateApacheLog();
-            var parser = new ServerLogFileParser(apacheLog);
 
+            // act
+            var parser = new ServerLogFileParser(apacheLog);
             var errors = parser.GetErrors();
+
+            // assert
             errors.Count.Should().Be(4);
             errors[3].Should().Contain("authentication failure");
+        }
+
+        [TestMethod]
+        public void ParseILogMock_ValidFile_CorrectErrorCount()
+        {
+            // arrange
+            var ilogmock = new ILogMock();
+
+            // act
+            var parser = new ServerLogFileParser(ilogmock);
+            var errors = parser.GetErrors();
+
+            // assert
+            errors.Count.Should().Be(3);
+            errors[2].Should().Contain("Quack");
         }
 
         [TestCleanup]
         public void TearDown()
         {
-            File.Delete(logFile);
+            if (logFile != null)
+            {
+                File.Delete(logFile);
+            }
         }
 
         private ApacheLog CreateApacheLog()

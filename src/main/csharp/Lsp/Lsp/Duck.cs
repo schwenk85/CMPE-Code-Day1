@@ -4,21 +4,19 @@ namespace Lsp
 {
     public abstract class Duck
     {
-        public virtual void Quack()
-        {
-            Console.WriteLine("quaak");
-        }
+        public abstract void Display();
 
         public virtual void Swim()
         {
             Console.WriteLine("splash splash");
         }
 
-        public abstract void Display();
-
-        public virtual void Fly()
+        public virtual void WriteActions()
         {
-            Console.WriteLine("flap flap flap");
+            Console.Write("NEXT:");
+            Display();
+            Console.Write("SWIMMING:");
+            Swim();
         }
     }
 }

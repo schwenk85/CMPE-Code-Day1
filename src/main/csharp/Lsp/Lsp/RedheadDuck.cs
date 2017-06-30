@@ -2,7 +2,7 @@ using System;
 
 namespace Lsp
 {
-    public class RedheadDuck : Duck
+    public class RedheadDuck : LivingDuck
     {
         public override void Display()
         {

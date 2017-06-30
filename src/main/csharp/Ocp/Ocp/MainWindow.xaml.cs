@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace Ocp
@@ -17,7 +18,6 @@ namespace Ocp
         private void DrawShapes()
         {
             var shapes = new List<Shape>();
-
             shapes.Add(new Circle(30));
             shapes.Add(new Square(70));
             shapes.Add(new Circle(30));

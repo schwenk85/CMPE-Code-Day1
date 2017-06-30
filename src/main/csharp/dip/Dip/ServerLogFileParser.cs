@@ -4,17 +4,17 @@ namespace Dip
 {
     public class ServerLogFileParser
     {
-        private readonly ApacheLog apacheLog;
+        private readonly ILog log;
 
-        public ServerLogFileParser(ApacheLog apacheLog)
+        public ServerLogFileParser(ILog log)
         {
-            this.apacheLog = apacheLog;
+            this.log = log;
         }
 
         public List<string> GetErrors()
         {
             var errors = new List<string>();
-            foreach (var logEntry in apacheLog.LoadLogEntries())
+            foreach (var logEntry in log.LoadLogEntries())
             {
                 if (logEntry.Type == LogType.Error)
                 {

@@ -11,11 +11,17 @@ namespace DipTests
         [TestMethod]
         public void ReadLogEntires_ValidFile_ReturnsCorrectEntires()
         {
+            // arrange
             var logFile = TestUtils.ExtractResourceToFile("DipTests.Resources.HTTPERR");
             var iisLog = new IisLog(logFile);
 
-            iisLog.ReadLogEntries().Should().HaveCount(4);
-            iisLog.ReadLogEntries().Where(l => l.Type == LogType.Error).Should().HaveCount(2);
+            // act
+
+
+
+            // assert
+            iisLog.LoadLogEntries().Should().HaveCount(4);
+            iisLog.LoadLogEntries().Where(l => l.Type == LogType.Error).Should().HaveCount(2);
         }
     }
 }

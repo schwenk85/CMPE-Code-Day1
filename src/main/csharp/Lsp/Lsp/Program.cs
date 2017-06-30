@@ -7,7 +7,11 @@ namespace Lsp
     {
         private static void Main()
         {
-            var ducks = new List<Duck> {new MallardDuck(), new RedheadDuck(), new RubberDuck(), new DecoyDuck()};
+            var ducks = new List<Duck> {
+                new MallardDuck(),
+                new RedheadDuck(),
+                new RubberDuck(),
+                new DecoyDuck()};
 
             HaveFunWithAllTheDucks(ducks);
 
@@ -19,14 +23,7 @@ namespace Lsp
         {
             foreach (var duck in ducks)
             {
-                Console.Write("NEXT: ");
-                duck.Display();
-                Console.Write("FLYING: ");
-                duck.Fly();
-                Console.Write("QUACKING: ");
-                duck.Quack();
-                Console.Write("SWIMMING: ");
-                duck.Swim();
+                duck.WriteActions();
                 Console.WriteLine();
             }
         }
